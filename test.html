@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>testing ngDirective</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+	<link rel="stylesheet" type="text/css" href="main.css">
+
+</head>
+<body>
+
+	<div class="container">
+
+		<div class="row">
+
+			<h1 class="page-header">Acme</h1>
+
+			<form class="col-md-12" name="opt-in">
+
+				<label form="opt-in">opt-in</label>
+				
+				<div class="col-md-6" ng-transclude></div>
+
+				<div class="col-md-6 formInputs">
+
+					<input class="col-md-6" type="text" placeholder="First Name"></input>
+
+					<input class="col-md-6" type="text" placeholder="Last Name"></input>
+
+					<input class="col-md-12" type="text" placeholder="Email"></input>
+
+					<input class="col-md-12" type="text" placeholder="Give us yr infoz!"></input>
+
+				</div>
+
+			</form>
+
+			<form class="col-md-12" name="footer">
+				
+				<label form="footer">Some footer stuff</label>
+
+				<input type="textarea"></input>
+
+			</form>
+
+		</div>
+
+	</div>
+
+</body>
+</html>
