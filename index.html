@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html ng-app="megaVideoDemo">
 <head>
 	<title>testing ngDirective</title>
 
@@ -10,11 +10,15 @@
 </head>
 <body>
 
-	<div class="container">
+	<mega-video
 
-		<p my-click="alert()">testing</p>
+		ogg="https://ia600500.us.archive.org/1/items/Duck_and_Cover/1951_duck_and_cover.ogv"
 
-	</div>
+		mp4="https://archive.org/download/Duck_and_Cover/1951_duck_and_cover_512kb.mp4"
+
+		width="500px">
+
+	</mega-video>
 
 	<script type="text/javascript" src="https://code.angularjs.org/1.2.21/angular.min.js"></script>
 

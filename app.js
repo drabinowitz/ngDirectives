@@ -1,29 +1,57 @@
-var app = angular.module('myApp', []);
+var app = angular.module('megaVideoDemo', []);
 
-app.
+app.directive('megaVideo', function($sce) {
 
-run(function($rootScope){
+	return {
 
-	$rootScope.alert = function(){alert("You've been alerted!")};
+		restrict : 'E',
 
-}).
+		templateUrl : './mega-video.html',
 
-directive('myClick', function(){
+		scope : true,
 
-	return function($scope, element, attrs){
+		link : function($scope, element, attrs) {
 
-		// debugger;
+			$scope.sources = [];
 
-		element.on('click',function() {
+			function processSources() {
 
-			$scope.$apply(function() {
+				var sourceTypes = {
 
-				$scope.$eval(attrs.myClick);
+					webm : { type : 'video/webm'},
+					
+					mp4 : { type : 'video/mp4'},
 
-			});
+					ogg : { type : 'video/ogg'}
 
-		});
+				}
 
-	};
+				for (source in sourceTypes){
 
-});
+					if( attrs.hasOwnProperty(source) ){
+
+						$scope.sources.push(
+
+							{
+
+								type : sourceTypes[source].type,
+
+								src : $sce.trustAsResourceUrl( attrs[source] )
+
+							}
+
+						);
+
+					}
+
+				}
+
+			}
+
+			processSources();
+
+		}
+
+	}
+
+})
