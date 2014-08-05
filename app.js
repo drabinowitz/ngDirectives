@@ -1,36 +1,28 @@
 var app = angular.module('myApp', []);
 
-/*app.directive('yoYo', function(){
+app.
 
-	return {
+run(function($rootScope){
 
-		// template : '<strong>Yo!</strong>',
+	$rootScope.alert = function(){alert("You've been alerted!")};
 
-		templateUrl : './yo.html',
+}).
 
-		transclude : true,
+directive('myClick', function(){
 
-		restrict : 'E',
+	return function($scope, element, attrs){
 
-		replace : true
+		// debugger;
 
-	};
+		element.on('click',function() {
 
-});*/
+			$scope.$apply(function() {
 
-app.directive('optIn', function(){
+				$scope.$eval(attrs.myClick);
 
-	return {
+			});
 
-		// template : '<strong>Yo!</strong>',
-
-		templateUrl : './opt-in.html',
-
-		transclude : true,
-
-		restrict : 'E',
-
-		replace : true
+		});
 
 	};
 
