@@ -10,47 +10,11 @@ app.directive('megaVideo', function($sce) {
 
 		scope : true,
 
-		link : function($scope, element, attrs) {
+		transclude : true,
 
-			var videoPlayer = element.find('video')[0];
+		controller : function($scope, $element, $attrs){
 
-			$scope.sources = [];
-
-			function processSources() {
-
-				var sourceTypes = {
-
-					webm : { type : 'video/webm'},
-					
-					mp4 : { type : 'video/mp4'},
-
-					ogg : { type : 'video/ogg'}
-
-				}
-
-				for (source in sourceTypes){
-
-					if( attrs.hasOwnProperty(source) ){
-
-						$scope.sources.push(
-
-							{
-
-								type : sourceTypes[source].type,
-
-								src : $sce.trustAsResourceUrl( attrs[source] )
-
-							}
-
-						);
-
-					}
-
-				}
-
-			}
-
-			processSources();
+			var videoPlayer = $element.find('video')[0];
 
 			$scope.video = {
 
@@ -72,7 +36,7 @@ app.directive('megaVideo', function($sce) {
 
 					videoPlayer.pause();
 					videoPlayer.currentTime = 0;
-					scope.video.status = 'stop';
+					$scope.video.status = 'stop';
 
 				},
 
@@ -82,14 +46,118 @@ app.directive('megaVideo', function($sce) {
 
 				},
 
-				width : attrs.width,
+				width : $attrs.width,
 
-				height : attrs.height
+				height : $attrs.height
 
 			};
+
+			var ctrl = this;
+
+			this.setVolume = function(level) {
+
+				videoPlayer.volume = level;
+
+			}
+
+		},
+
+		link : function(scope, element, attrs){
+
+			scope.sources = [];
+
+			function processSources() {
+
+				var sourceTypes = {
+
+					webm : { type : 'video/webm'},
+					
+					mp4 : { type : 'video/mp4'},
+
+					ogg : { type : 'video/ogg'}
+
+				}
+
+				for (source in sourceTypes){
+
+					if( attrs.hasOwnProperty(source) ){
+
+						scope.sources.push(
+
+							{
+
+								type : sourceTypes[source].type,
+
+								src : $sce.trustAsResourceUrl( attrs[source] )
+
+							}
+
+						);
+
+					}
+
+				}
+
+			}
+
+			processSources();
+
+		}
+
+	};
+
+}).
+
+directive('volumeSlider', function(){
+
+	return {
+
+		require : '?^megaVideo',
+
+		restrict : 'A',
+
+		link : function(scope, element, attrs, megaVideoController) {
+
+			var initialVolume = parseFloat(attrs.initialVolume);
+
+			megaVideoController.setVolume(initialVolume);
+
+			angular.element(element.slider({
+
+				min : 0,
+
+				max : 1,
+
+				step : 0.01,
+
+				value : initialVolume,
+
+				orientation : 'horizontal',
+
+				slide : function(event, ui) {
+
+					scope.$apply(function(){
+
+						megaVideoController.setVolume(ui.value);
+
+					});
+
+				},
+
+				change : function(event, ui) {
+
+					scope.$apply(function() {
+
+						megaVideoController.setVolume(ui.value);
+
+					});
+
+				}
+
+			}));
 
 		}
 
 	}
 
-})
+});

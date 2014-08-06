@@ -1,21 +1,27 @@
-<video
+<div>
 
-	width="{{ video.width }}"
+	<video
 
-	height="{{ video.height }}"
+		width="{{ video.width }}"
 
-	ng-click="video.togglePlay()"
+		height="{{ video.height }}"
 
-	ng-dblclick="video.stop()">
+		ng-click="video.togglePlay()"
 
-	<source
+		ng-dblclick="video.stop()">
 
-		ng-repeat="source in sources"
+		<source
 
-		ng-src="{{ source.src }}"
+			ng-repeat="source in sources"
 
-		type="{{ source.type }}">
+			ng-src="{{ source.src }}"
 
-	</source>
+			type="{{ source.type }}">
 
-</video>
+		</source>
+
+	</video>
+
+	<div ng-transclude></div>
+
+</div>

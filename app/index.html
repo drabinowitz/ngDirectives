@@ -3,14 +3,11 @@
 <head>
 	<title>testing ngDirective</title>
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-	<link rel="stylesheet" type="text/css" href="main.css">
-
+	<link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/slider.css">
 </head>
 <body>
 
-	<mega-video
+<!-- 	<mega-video
 
 		width="60%"
 
@@ -18,21 +15,34 @@
 
 		mp4="https://archive.org/download/Duck_and_Cover/1951_duck_and_cover_512kb.mp4">
 
-	</mega-video>
+	</mega-video> -->
 
 	<mega-video
 
-		width="10%"
+		width="60%"
 
 		ogg="https://ia600707.us.archive.org/26/items/Are_You_Keeping_Up_With_Your_Commodore_1983_Commodore_AU/Are_You_Keeping_Up_With_Your_Commodore_1983_Commodore_AU.ogv"
 
     	mp4="https://archive.org/download/Are_You_Keeping_Up_With_Your_Commodore_1983_Commodore_AU/Are_You_Keeping_Up_With_Your_Commodore_1983_Commodore_AU.mp4">
 
+    	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+    	<div volume-slider initial-volume="0.4" class="my-slider"></div>
+
 	</mega-video>
 
-	<script type="text/javascript" src="https://code.angularjs.org/1.2.21/angular.min.js"></script>
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
 
-	<script type="text/javascript" src="./app.js"></script>
+	<script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.js"></script>
+
+	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript" src="app.js"></script>
 
 </body>
 </html>
