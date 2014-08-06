@@ -12,6 +12,8 @@ app.directive('megaVideo', function($sce) {
 
 		link : function($scope, element, attrs) {
 
+			var videoPlayer = element.find('video')[0];
+
 			$scope.sources = [];
 
 			function processSources() {
@@ -49,6 +51,42 @@ app.directive('megaVideo', function($sce) {
 			}
 
 			processSources();
+
+			$scope.video = {
+
+				play : function() {
+
+					videoPlayer.play();
+					$scope.video.status = 'play';
+
+				},
+
+				pause : function() {
+
+					videoPlayer.pause();
+					$scope.video.status = 'pause';
+
+				},
+
+				stop : function() {
+
+					videoPlayer.pause();
+					videoPlayer.currentTime = 0;
+					scope.video.status = 'stop';
+
+				},
+
+				togglePlay : function() {
+
+					$scope.video.status == 'play' ? this.pause() : this.play(); 
+
+				},
+
+				width : attrs.width,
+
+				height : attrs.height
+
+			};
 
 		}
 
