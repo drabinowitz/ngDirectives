@@ -1,0 +1,10 @@
+label {
+	display: block;
+}
+
+form {
+	border: 1px solid;
+	margin-top: 15px;
+	padding-top: 10px;
+	padding-bottom: 19px;
+}
