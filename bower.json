@@ -1,0 +1,21 @@
+{
+  "name": "ngDirectives",
+  "version": "0.0.0",
+  "homepage": "https://github.com/drabinowitz/ngDirectives",
+  "authors": [
+    "git-username <git-email-address>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.21",
+    "angular-mocks": "~1.2.21",
+    "jquery": "~2.1.1"
+  }
+}
