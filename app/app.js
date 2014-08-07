@@ -158,6 +158,6 @@ directive('volumeSlider', function(){
 
 		}
 
-	}
+	};
 
 });
